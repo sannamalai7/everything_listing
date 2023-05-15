@@ -1,0 +1,60 @@
+<!-- Begin Project Listing -->
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div *ngIf="(facetsResponse | length) == 0">
+			<div style="font-weight: 600;" [innerHTML]="noData"></div>	
+		</div>
+
+		<div *ngIf="(facetsResponse | length) > 0">
+			<!-- Begin Shorting  -->
+			<div class="f05v6-sorting clearfix" *ngIf="isSrt">
+				<div class="f05v6-sorting-label">{{sortBy | locale : i18n}}: </div>
+				<ul>
+					<li *ngIf="isSearch">
+						<a data-customlink="ss:body content" [ngClass]="{'event-disable-click': srt == 'score'}" (click)="getSortBy('srt=score'); false">{{bestMatch | locale : i18n}}</a>
+					</li> 
+					<li *ngIf="isSearch">|</li>
+					<li>
+						<a data-customlink="ss:body content" [ngClass]="{'event-disable-click': srt == 'surname'}" (click)="getSortBy('srt=surname'); false">{{alphabetical | locale : i18n}}</a>
+					</li> 
+					<li>|</li>
+					<li>
+						<a data-customlink="ss:body content" [ngClass]="{'event-disable-click': srt == 'job_title'}" (click)="getSortBy('srt=job_title'); false">{{jobTitle | locale : i18n}}</a>
+					</li>
+				</ul>			
+			</div>
+			<!-- End Shorting  -->		
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="search-listing" *ngFor="let document of documents">
+						<ul>
+							<li>
+								<div class="search-listing-img">
+	                                <img [src]="document.filereference" onError="this.style='display: none;'">
+	                            </div>
+								<div class="search-listing-content">
+									<h4><a data-searchresult="y" data-customlink="sr:body content" [attr.href]="document.url">{{document.first_name}} {{document.surname}}</a></h4>
+									<p class="blurb-text" *ngFor="let content of document.content | keys">
+										<span [innerHTML]="content.value | limit : 200"></span>
+									</p>
+									<div class="search-listing-info">
+										<span class="info-list-item" *ngIf="document.job_title != undefined">
+											<span class="info-list-title">{{jobTitle | locale : i18n}}:</span>					
+											{{document.job_title}}
+										</span>
+										<span class="info-list-item" *ngIf="document.lang_spoken != undefined">
+											<span class="info-list-title">{{language | locale : i18n}}:</span>
+											{{document.lang_spoken | languageSpoken}}
+										</span>										
+									</div>
+								</div>
+							</li>
+						</ul>
+						<hr>						
+					</div>					
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>
+<!-- End Project Listing -->				

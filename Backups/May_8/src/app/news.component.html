@@ -1,0 +1,60 @@
+<div class="row" #everythingContent>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div *ngIf="(facetsResponse | length) == 0">
+      <div style="font-weight: 600" [innerHTML]="noData"></div>
+    </div>
+    <!-- Begin Shorting  -->
+    <!-- <div class="f05v6-sorting clearfix">
+        <div class="f05v6-sorting-label">{{ sortBy | locale : i18n }}:</div>
+        <ul *ngIf="!isSearch">
+          <li>
+            <a
+              data-customlink="ss:body content"
+              [ngClass]="{ 'event-disable-click': srt == 'lnchdt' }"
+              (click)="getSortBy('srt=lnchdt'); (false)"
+              >{{ date | locale : i18n }}</a
+            >
+          </li>
+        </ul>
+        <ul *ngIf="isSearch">
+          <li>
+            <a
+              data-customlink="ss:body content"
+              [ngClass]="{ 'event-disable-click': srt == 'score' }"
+              (click)="getSortBy('srt=score'); (false)"
+              >{{ bestMatch | locale : i18n }}</a
+            >
+          </li>
+          <li>|</li>
+          <li>
+            <a
+              data-customlink="ss:body content"
+              [ngClass]="{ 'event-disable-click': srt == 'lnchdt' }"
+              (click)="getSortBy('srt=lnchdt'); (false)"
+              >{{ date | locale : i18n }}</a
+            >
+          </li>
+        </ul>
+      </div> -->
+    <!-- End Shorting  -->
+    <div class="lp__latest_list_section" *ngIf="(facetsResponse | length) > 0">
+      <ul class="lp__latest_item_info">
+        <li class="lp__latest_item_list" *ngFor="let document of documents">
+          <div class="lp__latest_hammer">
+            <span>{{ document.contenttype }}</span
+            ><span>{{ document.master_date | date }}</span>
+          </div>
+          <div class="lp__latest_title">
+            <a
+              data-searchresult="y"
+              tabindex="-1"
+              data-customlink="sr:body content"
+              [attr.href]="document.url"
+              >{{ document.title }}
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

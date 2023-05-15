@@ -1,0 +1,214 @@
+<!-- <ul class="sidebar-list" *ngFor="let facet of facets; let i = index">
+  <li class="sidebar-list-item" (click)="onCollapse(facet.facetName)">
+    <a
+      class="sidebar-link"
+      attr.aria-expanded="{{ collapseFacets | contains : facet.facetName }}"
+      >{{ facet.facetName | locale : i18nValues }}</a
+    >
+  </li>
+  <ul
+    id="collapse"
+    class="sidebar-sublist"
+    [@facetFadeInOut]="collapseFacets | facetAnimation : facet.facetName"
+  >
+    <div
+      class="_loop_primary_search"
+      *ngIf="!(selectedFacetItems | objectContains : facet.facetName)"
+    >
+      <input
+        type="search"
+        [(ngModel)]="this['facet' + i]"
+        placeholder="{{ placeholder }}"
+        id="primary_inputs-1"
+      />
+    </div>
+    <li
+      *ngFor="
+        let facetItem of facet.facetItems
+          | facetContains
+            : limitFacets
+            : i
+            : this['facet' + i]
+            : selectedFacetItems
+            : facet.facetName
+      "
+    >
+
+      <div
+        class="_loop_checkbox"
+        *ngIf="
+          facetType === 'checkbox' &&
+          !(selectedFacetItems | objectContains : facet.facetName)
+        "
+      >
+        <input
+          class="_loop_primary_checkbox"
+          type="checkbox"
+          [checked]="
+            selectedFacetItems | checked : facet.facetName : facetItem.name
+          "
+          (change)="onSelectFacetItem(facet.facetName, facetItem.name)"
+        />
+        <label for="srchwtn">
+          <div class="sidebar-sublist_wrapper">
+            <span class="sidebar-sublist-item">{{
+              facetItem.label | resultsLabel : facetItem.name : locale
+            }}</span>
+            <span class="list-item-num">({{ facetItem.count }})</span>
+          </div>
+        </label>
+      </div>
+
+      <div
+        class="_loop_checkbox"
+        *ngIf="
+          facetType === 'checkbox' &&
+            (selectedFacetItems | objectContains : facet.facetName) &&
+            selectedFacetItems | checked : facet.facetName : facetItem.name
+        "
+      >
+        <input
+          class="_loop_primary_checkbox"
+          type="checkbox"
+          [checked]="
+            selectedFacetItems | checked : facet.facetName : facetItem.name
+          "
+          (change)="onSelectFacetItem(facet.facetName, facetItem.name)"
+        />
+        <label for="srchwtn">
+          <div class="sidebar-sublist_wrapper">
+            <span class="sidebar-sublist-item">{{
+              facetItem.label | resultsLabel : facetItem.name : locale
+            }}</span>
+            <span class="list-item-num">({{ facetItem.count }})</span>
+          </div>
+        </label>
+      </div>
+    </li>
+
+    <li
+      class="expand-link"
+      *ngIf="
+        (facet.facetItems | length) > 6 &&
+        !(selectedFacetItems | objectContains : facet.facetName)
+      "
+    >
+      <a
+        *ngIf="!(limitFacets | contains : i)"
+        (click)="onSeeMore(i); (false)"
+        >{{ seeMore | locale : i18nValues }}</a
+      >
+      <a *ngIf="limitFacets | contains : i" (click)="onSeeLess(i); (false)">{{
+        seeLess | locale : i18nValues
+      }}</a>
+    </li>
+  </ul>
+</ul> -->
+<!-- strtr -->
+<li class="sidebar-list-item" *ngFor="let facet of facets; let i = index">
+  <a
+    class="sidebar-link collapsed"
+    data-toggle="collapse"
+    [attr.data-target]="'#collapse' + i"
+    attr.aria-expanded="{{ collapseFacets | contains : facet.facetName }}"
+  >
+    {{ facet.facetName | locale : i18nValues }}
+  </a>
+  <div
+    class="sidebar-sublist collapse"
+    [id]="'collapse' + i"
+    role="region"
+    aria-labelledby="sr-sidebar-list"
+    [ngClass]="(collapseFacets | contains : facet.facetName) ? 'show' : ''"
+  >
+    <ul>
+      <li
+        class="lp__checkbox sidebar-sublist-item"
+        *ngFor="
+          let facetItem of facet.facetItems
+            | facetContains
+              : limitFacets
+              : i
+              : this['facet' + i]
+              : selectedFacetItems
+              : facet.facetName
+        "
+      >
+        <div *ngIf="!(selectedFacetItems | objectContains : facet.facetName)">
+          <input
+            type="checkbox"
+            class="lp__primary_checkbox"
+            [checked]="
+              selectedFacetItems | checked : facet.facetName : facetItem.name
+            "
+            (change)="onSelectFacetItem(facet.facetName, facetItem.name)"
+          />
+          <label for="sr__checkbox" class="lp__input_text">
+            <span class="lp__checkbox_label_wrapper">
+              <span class="lp__checkbox_label"
+                >{{
+                  facetItem.label | resultsLabel : facetItem.name : locale
+                }}
+                ({{ facetItem.count }})</span
+              >
+            </span>
+          </label>
+        </div>
+
+        <div
+          *ngIf="
+            (selectedFacetItems | objectContains : facet.facetName) &&
+              selectedFacetItems | checked : facet.facetName : facetItem.name
+          "
+        >
+          <input
+            type="checkbox"
+            class="lp__primary_checkbox"
+            [checked]="
+              selectedFacetItems | checked : facet.facetName : facetItem.name
+            "
+            (change)="onSelectFacetItem(facet.facetName, facetItem.name)"
+          />
+          <label for="sr__checkbox" class="lp__input_text">
+            <span class="lp__checkbox_label_wrapper">
+              <span class="lp__checkbox_label"
+                >{{
+                  facetItem.label | resultsLabel : facetItem.name : locale
+                }}
+                ({{ facetItem.count }})</span
+              >
+            </span>
+          </label>
+        </div>
+      </li>
+      <li
+        *ngIf="
+          (facet.facetItems | length) > 6 &&
+          !(selectedFacetItems | objectContains : facet.facetName)
+        "
+      >
+        <a
+          class="lp__show_listbtn"
+          *ngIf="!(limitFacets | contains : i)"
+          (click)="onSeeMore(i); (false)"
+          role="link"
+          tabindex="0"
+          ><span class="lp__toggle_btn">{{
+            seeMore | locale : i18nValues
+          }}</span>
+        </a>
+        <a
+          class="lp__show_listbtn"
+          *ngIf="limitFacets | contains : i"
+          (click)="onSeeLess(i); (false)"
+          role="link"
+          tabindex="0"
+        >
+          <span class="lp__toggle_btn">{{
+            seeLess | locale : i18nValues
+          }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>

@@ -1,0 +1,28 @@
+<!-- <div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	    <div class="listing_search">
+	    	<div class="header-search-section">		    	
+		        <form class="input-group has-feedback" (ngSubmit)="onSearch()">
+			    	<input type="text" class="search-input-field-1" label="search" title="search" [(ngModel)]="searchValue" placeholder="{{searchBoxText}}" [ngModelOptions]="{standalone: true}">
+			    	<i class="fa fa-search search-submit-icon search-comp" (click)="onSearch()"></i>			    	
+				</form>			
+	    	</div>
+	    </div>
+	</div>
+</div> -->
+
+<div class="lp__search_section lp__secondary_search">
+  <form class="lp__input_group" name="searchbox" (ngSubmit)="onSearch()">
+    <input
+      type="search"
+      class="search-input-field"
+      aria-label="Search Documents"
+      [(ngModel)]="searchValue"
+      placeholder="{{ searchBoxText }}"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <button type="submit" class="lp__submit_icon" (click)="onSearch()">
+      <span class="sr-only">Search</span>
+    </button>
+  </form>
+</div>

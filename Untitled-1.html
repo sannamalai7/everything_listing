@@ -1,0 +1,218 @@
+
+<div class="full-row-white-components">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<div class="sidebar-wrapper" role="complementary">
+				<div class="sidebar-heading hidden-sm hidden-xs">
+				<h2 class="sidebar-title">Filter</h2>
+				</div>
+				<div class="sidebar-mobile-heading visible-sm visible-xs">
+				<button data-target="#sr__accordion" data-toggle="collapse" type="button" class="dropdown-toggle" aria-expanded="false">
+				<span class="sidebar-nav-mob-title">Filter by</span>
+				</button> 
+				</div>
+				<div id="sr__accordion" class="collapse sidebar-collapse">
+				<div class="sidebar">
+				<ul class="sidebar-list">
+					<li class="sidebar-list-item">
+						<button class="sidebar-link collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false" id="sr-sidebar-list">Specific Date Range</button>
+							<div class="sidebar-sublist collapse" id="collapse" role="region" aria-labelledby="sr-sidebar-list" style="">
+									<form name="datesearch" action="/en/news/multimedia" method="get" onsubmit="return dateSearchSubmit();">  
+										<div class="lp__primary_input">
+										<label class="lp__input_text" for="sr-start-date">Start Date</label>
+										<input type="date" id="sr-start-date" class="lp__form_control" value="mm/dd/yyyy" title="startdate">
+										</div>
+										<div class="lp__primary_input">	
+										<label class="lp__input_text" for="sr-end-date">End Date</label>
+										<input type="date" id="sr-end-date" class="lp__form_control" value="mm/dd/yyyy" title="enddate">
+										</div>
+										<input type="hidden" name="qterm" value="">
+										<input type="hidden" name="lang_exact" value="English">
+										</form>
+								</div>
+					</li><!--end Region-->
+					<li class="sidebar-list-item">
+						<button class="sidebar-link collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false" id="sr-sidebar-list">Document Type</button>
+						<div class="sidebar-sublist collapse" id="collapse" role="region" aria-labelledby="sr-sidebar-list" style="">
+							<ul>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">SPEECHES &amp; TRANSCRIPTS</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">STATEMENTS &amp; PRESS RELEASES</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">BLOGS &amp; OP-EDS</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper"><span>THE WAY FORWARD</span>
+										</span>
+									</label>
+								</li>
+								
+							</ul>
+						</div>
+					</li><!--end Specific Date Range-->
+					<li class="sidebar-list-item">
+						<button class="sidebar-link collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false" id="sr-sidebar-list">Country</button>
+						<div class="sidebar-sublist collapse" id="collapse" role="region" aria-labelledby="sr-sidebar-list" style="">
+							<ul>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Afghanistan</span>
+											<span>(12)</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Africa</span><span>(77)</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Albania</span><span>(7)</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Argentina</span><span>(32)</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Asia</span><span>(69)</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Australia</span><span>(22)</span>
+										</span>
+									</label>
+								</li>
+								<li><a class="lp__show_listbtn morelist" aria-expanded="false" href="#">
+									<span class="lp__toggle_btn">See More</span>
+								</a></li>
+								<li class="lp__checkbox sidebar-sublist-item ultwo" style="display:none;">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Bangladesh</span><span>(46)</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item ultwo" style="display:none;">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Bhutan</span><span>(8)</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item ultwo" style="display:none;">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Bolivia</span><span>(17)</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item ultwo" style="display:none;">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Brazil</span><span>(79)</span>
+										</span>
+									</label>
+								</li>
+								<li class="lp__checkbox sidebar-sublist-item ultwo" style="display:none;">
+									<input type="checkbox" class="lp__primary_checkbox" id="sr__checkbox" value="">
+									<label for="sr__checkbox" class="lp__input_text">
+										<span class="lp__checkbox_label_wrapper">
+											<span class="lp__checkbox_label">Burkina Faso</span><span>(7)</span>
+										</span>
+									</label>
+								</li>
+								<li><a class="lp__show_listbtn lesslist hidden" aria-expanded="true" href="#">
+									<span class="lp__toggle_btn">See Less</span>
+								</a></li>
+							</ul>
+						</div>
+					</li><!--end Type-->
+				
+				
+				</ul>
+				</div>
+				</div>
+				</div>    
+				
+				
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+					<div class="all__search_section">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="lp__search_section  lp__secondary_search">			 
+									<form class="lp__input_group" name="searchbox" method="post">  
+										<input type="search" placeholder="Search Documents" class="search-input-field" name="qterm" id="project" aria-label="Search Documents">
+										<!-- <input class="lp__submit_icon" type="image" src="../img/search-orange.svg" alt="search"> -->
+										<button type="submit" class="lp__submit_icon"><span class="sr-only">Search</span></button>
+				
+										<input type="hidden" name="lang_exact" value="English">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="lp__latest_list_section">
+				    <ul class="lp__latest_item_info">
+				        <li class="lp__latest_item_list">
+				            <div class="lp__latest_hammer"><span>SPEECHES AND TRANSCRIPTS</span><span>JUN 02, 2020</span></div>
+				            <div class="lp__latest_title"><a href="">Opening Remarks by World Bank Group President David Malpass during the media call on the Analytical Chapters of the June 2020 Global Economic Prospects Report</a></div>
+				        </li>   
+				    </ul>
+				</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,94 @@
+<!-- <ul class="sidebar-list">
+  <li class="sidebar-list-item">
+    <a
+      class="sidebar-link"
+      (click)="updateIsCollapsed(!isCollapsed)"
+      attr.aria-expanded="{{ !isCollapsed }}"
+      >{{ specificDateRange | locale : i18nValues }}</a
+    >
+  </li>
+  <ul class="sidebar-sublist" [@dateFadeInOut]="collapseAnimation">
+    <div class="_loop_primary_input">
+      <label class="input_text">{{
+        startDateLabel | locale : i18nValues
+      }}</label>
+      <my-date-picker
+        [options]="startDateOptions"
+        (dateChanged)="onStartDateChanged($event)"
+        [placeholder]="placeholder"
+        [selDate]="startDate"
+      ></my-date-picker>
+    </div>
+    <div class="_loop_primary_input">
+      <label class="input_text">{{ endDateLabel | locale : i18nValues }}</label>
+      <my-date-picker
+        [options]="endDateOptions"
+        (dateChanged)="onEndDateChanged($event)"
+        [placeholder]="placeholder"
+        [selDate]="endDate"
+      ></my-date-picker>
+    </div>
+    <div class="submit-btn">
+      <a style="cursor: pointer" (click)="onDateRange(); (false)"
+        ><i [ngClass]="dateIcon"></i
+      ></a>
+    </div>
+  </ul>
+</ul> -->
+
+<li class="sidebar-list-item">
+  <button
+    class="sidebar-link collapsed"
+    data-toggle="collapse"
+    data-target="#collapse"
+    aria-expanded="false"
+    id="sr-sidebar-list"
+    (click)="updateIsCollapsed(!isCollapsed)"
+    attr.aria-expanded="{{ !isCollapsed }}"
+  >
+    {{ specificDateRange | locale : i18nValues }}
+  </button>
+  <div
+    class="sidebar-sublist collapse"
+    id="collapse"
+    role="region"
+    aria-labelledby="sr-sidebar-list"
+    style=""
+    [@dateFadeInOut]="collapseAnimation"
+  >
+    <form
+      name="datesearch"
+      action="/en/news/multimedia"
+      method="get"
+      onsubmit="return dateSearchSubmit();"
+    >
+      <div class="lp__primary_input">
+        <label class="lp__input_text" for="sr-start-date">{{
+          startDateLabel | locale : i18nValues
+        }}</label>
+        <my-date-picker
+          [options]="startDateOptions"
+          (dateChanged)="onStartDateChanged($event)"
+          [placeholder]="placeholder"
+          [selDate]="startDate"
+        ></my-date-picker>
+      </div>
+      <div class="lp__primary_input">
+        <label class="lp__input_text" for="sr-end-date">{{
+          endDateLabel | locale : i18nValues
+        }}</label>
+        <my-date-picker
+          [options]="endDateOptions"
+          (dateChanged)="onEndDateChanged($event)"
+          [placeholder]="placeholder"
+          [selDate]="endDate"
+        ></my-date-picker>
+      </div>
+      <div class="submit-btn">
+        <a style="cursor: pointer" (click)="onDateRange(); (false)"
+          ><i [ngClass]="dateIcon"></i
+        ></a>
+      </div>
+    </form>
+  </div>
+</li>

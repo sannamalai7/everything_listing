@@ -1,0 +1,88 @@
+<!-- <div class="row" #everythingContent>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div *ngIf="(facetsResponse | length) == 0">
+      <div style="font-weight: 600" [innerHTML]="noData"></div>
+    </div>
+
+    <div class="lp__latest_list_section" *ngIf="(facetsResponse | length) > 0">
+      <ul class="lp__latest_item_info">
+        <li class="lp__latest_item_list" *ngFor="let document of documents">
+          <div class="lp__latest_hammer">
+            <span>{{ document.language }}</span
+            ><span>{{ document.meeting}</span>
+          </div>
+          <div class="lp__latest_title">
+            <a
+              data-searchresult="y"
+              tabindex="-1"
+              data-customlink="sr:body content"
+              [attr.href]="document.url"
+              >{{ document.title }}
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<div class="row" #everythingContent>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <!-- <div class="sorting-section visible-xs">
+                  <div class="sorting-label">{{ sortByLabel }}:</div>
+                  <ul class="sorting-list">
+                    <li
+                      [ngClass]="{
+                        'active-sortable': sortBy == documentHeadersProperties[i]
+                      }"
+                      (click)="onSort(documentHeadersProperties[i], sortType)"
+                      *ngFor="let header of documentHeaders; let i = index"
+                    >
+                      <a data-customlink="ss:header">{{ header }}</a>
+                    </li>
+                  </ul>
+                </div> -->
+    <div class="responsive-table document-opt-table">
+      <div class="paragraph table-sort sorter">
+        <table class="row-border hover responsive document-operation-tab-table">
+          <thead>
+            <tr>
+              <th
+                data-customlink="ss:header"
+                *ngFor="let header of documentHeaders; let i = index"
+              >
+                {{ header }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let document of documents; let i = index">
+              <!--  <td [attr.data-th]="">
+                <a
+                  class="document-list-link"
+                  href="{{ document.url }}"
+                  target="_blank"
+                  >{{ document.title }}</a
+                >
+              </td> -->
+              <td *ngFor="let keys of documentHeaderskeys; let i = index">
+                <ng-container *ngIf="keys == 'devcom_title'">
+                  <a
+                    class="document-list-link"
+                    href="{{ document.devcom_path }}"
+                    target="_blank"
+                  >
+                    {{ document[keys] }}
+                  </a>
+                </ng-container>
+                <ng-container *ngIf="keys != 'devcom_title'">
+                  {{ document[keys] }}
+                </ng-container>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

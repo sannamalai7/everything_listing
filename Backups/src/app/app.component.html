@@ -1,0 +1,211 @@
+<div class="full-row-white-components">
+  <div class="container">
+    <div class="ajax-div" *ngIf="loading">
+      <img src="{{ imagePath }}" class="ajax-loader" alt="Loading" />
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="sidebar-wrapper" role="complementary">
+          <div class="sidebar-heading hidden-sm hidden-xs">
+            <h2 class="sidebar-title">{{ filter }}</h2>
+            <div class="clear-all">
+              <button type="button" class="reset-btn" (click)="onClearAll()">
+                {{ clearAll }} x
+              </button>
+            </div>
+          </div>
+          <div class="sidebar-mobile-heading visible-sm visible-xs">
+            <button
+              data-target="#sr__accordion"
+              data-toggle="collapse"
+              type="button"
+              class="dropdown-toggle"
+              aria-expanded="false"
+            >
+              <span class="sidebar-nav-mob-title">Filter by</span>
+            </button>
+          </div>
+          <div id="sr__accordion" class="collapse sidebar-collapse">
+            <div class="sidebar">
+              <ul class="sidebar-list">
+                <!-- <li class="sidebar-list-item">
+                  <timeframe
+                    #timeframe
+                    [ngClass]="{ hide: searchIn == 'all_experts' }"
+                    [timeframeParameter]="timeframeParameter"
+                    [i18n]="i18n"
+                    (timeFramesOut)="mobileFacets.getTimeframes($event)"
+                    (timeFrameItemsOut)="mobileFacets.getTimeFrameItems($event)"
+                    (outParameters)="updateParameter($event)"
+                  ></timeframe>
+                </li> -->
+
+                <date
+                  #date
+                  [ngClass]="{ hide: searchIn == 'all_experts' }"
+                  [apiLanguage]="apiLanguage"
+                  [startDateParameters]="startDateParameters"
+                  [endDateParameters]="endDateParameters"
+                  [i18n]="i18n"
+                  (selectedDateRange)="
+                    mobileFacets.onSeletedDates(
+                      $event.startDate,
+                      $event.endDate
+                    )
+                  "
+                  (outParameters)="updateParameter($event)"
+                ></date>
+
+                <mobilefacets
+                  #mobileFacets
+                  [isCollapsed]="isCollapsed"
+                  [facetsIn]="facets"
+                  [i18n]="i18n"
+                  [searchIn]="searchIn"
+                  [apiLanguage]="apiLanguage"
+                  (isCollapsedOut)="updateIsCollapsed($event)"
+                  (selectedTimeframe)="timeframe.onSelectTimeFrame($event)"
+                  (deselectedTimeframe)="timeframe.onDeselectTimeFrame()"
+                  (selectedDateRange)="
+                    date.onSelectedDate($event.startDate, $event.endDate)
+                  "
+                  (selectedFacet)="
+                    facet.onSelectFacetItem($event.facet, $event.itemName)
+                  "
+                  (deselectedFacet)="facet.onDeselectFacetItem($event)"
+                ></mobilefacets>
+                <!--end Region-->
+                <facets
+                  #facet
+                  [facetType]="facetType"
+                  [facetParameters]="facetParameters"
+                  [facetsIn]="facets"
+                  [i18n]="i18n"
+                  [apiLanguage]="apiLanguage"
+                  (selectedFacets)="mobileFacets.getSelectedFacets($event)"
+                  (outParameters)="updateParameter($event)"
+                ></facets>
+                <!--end Type-->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="all__search_section">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <search
+                [queryParameter]="queryParameter"
+                [searchIn]="searchIn"
+                [searchBoxText]="searchBoxText"
+                [apiLanguage]="apiLanguage"
+                (outParameters)="updateParameter($event)"
+              >
+              </search>
+            </div>
+          </div>
+        </div>
+        <!-- count start -->
+        <!-- <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label class="m-result-lbl" *ngIf="isMobile">{{
+              showingResults | showing : i18n : showingFrom : showingTo : total
+            }}</label>
+            <label class="m-result-lbl" *ngIf="!isMobile"
+              >{{ showingDetails }}
+            </label>
+          </div>
+        </div> -->
+        <!-- cont end -->
+        <!-- start of Listing -->
+        <news
+          [searchIn]="searchIn"
+          [url]="url"
+          [localeUrlParameter]="localeUrlParameter"
+          [allFacets]="allFacets"
+          [keys]="keys"
+          [localeAndDateFormat]="localeAndDateFormat"
+          [excludedLanguages]="excludedLanguages"
+          [regionParam]="regionParam"
+          (finalResponse)="updatedValues($event)"
+          (outParameters)="updateParameter($event)"
+          (regionLabel)="updatedLabel($event)"
+        ></news>
+        <!-- End of Listing -->
+        <!-- pagination and load more starts -->
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="isMobile">
+            <div id="loadMore1" #loadMoreElem></div>
+            <!-- End loader -->
+            <div class="totop" *ngIf="isScrollToTop" [@fadeInOut]>
+              <a id="totop" (click)="onScrollToTop(); (false)">Back to top</a>
+            </div>
+          </div>
+
+          <!-- pagination starts here -->
+          <div
+            class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            *ngIf="!isMobile"
+          >
+            <ul
+              *ngIf="pager.pages && pager.pages.length"
+              class="pagination"
+              style="cursor: pointer"
+            >
+              <li [ngClass]="{ disabled: pager.currentPage === 1 }">
+                <a data-customlink="sp:footer" (click)="setPage(1, scrollTo)"
+                  ><i [class]="leftArrow" aria-hidden="true"></i
+                  ><i [class]="leftArrow" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li [ngClass]="{ disabled: pager.currentPage === 1 }">
+                <a
+                  data-customlink="sp:footer"
+                  (click)="setPage(pager.currentPage - 1, scrollTo)"
+                  ><i [class]="leftArrow" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li
+                *ngFor="let page of pager.pages"
+                [ngClass]="{ active: pager.currentPage === page }"
+              >
+                <a
+                  data-customlink="sp:footer"
+                  (click)="setPage(page, scrollTo)"
+                  >{{ page }}</a
+                >
+              </li>
+              <li
+                [ngClass]="{
+                  disabled: pager.currentPage === pager.totalPages
+                }"
+              >
+                <a
+                  data-customlink="sp:footer"
+                  (click)="setPage(pager.currentPage + 1, scrollTo)"
+                  ><i [class]="rightArrow" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li
+                [ngClass]="{
+                  disabled: pager.currentPage === pager.totalPages
+                }"
+              >
+                <a
+                  data-customlink="sp:footer"
+                  (click)="setPage(pager.totalPages, scrollTo)"
+                  ><i [class]="rightArrow" aria-hidden="true"></i
+                  ><i [class]="rightArrow" aria-hidden="true"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <!-- pagination ends here -->
+        </div>
+        <!-- pagination and load more ends -->
+      </div>
+    </div>
+  </div>
+</div>

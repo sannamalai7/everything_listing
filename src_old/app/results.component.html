@@ -1,0 +1,62 @@
+<!-- Begin Project Listing -->
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div *ngIf="(facetsResponse | length) == 0">
+			<div style="font-weight: 600;" [innerHTML]="noData"></div>	
+		</div>
+
+		<div *ngIf="(facetsResponse | length) > 0">
+			<!-- Begin Shorting  -->
+			<div class="f05v6-sorting clearfix">
+				<div class="f05v6-sorting-label">{{sortBy | locale : i18n}}: </div>
+				<ul *ngIf="!isSearch">
+					<li>
+						<a data-customlink="ss:body content" [ngClass]="{'event-disable-click': srt == 'date'}" (click)="getSortBy('srt=date'); false">{{date | locale : i18n}}</a>
+					</li> 
+				</ul>
+				<ul *ngIf="isSearch">
+					<li>
+						<a data-customlink="ss:body content" [ngClass]="{'event-disable-click': srt == 'score'}" (click)="getSortBy('srt=score'); false">{{bestMatch | locale : i18n}}</a>
+					</li> 
+					<li>|</li>
+					<li>
+						<a data-customlink="ss:body content" [ngClass]="{'event-disable-click': srt == 'date'}" (click)="getSortBy('srt=date'); false">{{date | locale : i18n}}</a>
+					</li> 					
+				</ul>			
+			</div>
+			<!-- End Shorting  -->			
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="search-listing" *ngFor="let document of documents">
+						<ul>
+							<li>
+								<div class="search-listing-content">
+									<h4><a data-searchresult="y" data-customlink="sr:body content" [attr.href]="document.url" *ngFor="let title of document.title | keys">{{title.value}}</a></h4>
+									<p class="blurb-text" *ngFor="let content of document.content | keys">
+										<span [innerHTML]="content.value | limit : 200"></span>
+									</p>
+									<div class="search-listing-info">
+										<span class="info-list-item">
+											<span class="info-list-title">{{date | locale : i18n}}:</span>					
+											{{document.lnchdt | dateFormat : localeAndDateFormat}}
+										</span>
+										<span class="info-list-item">
+											<span class="info-list-title">{{type | locale : i18n}}:</span>                                            
+                                            <span>{{document.displayconttype | results}}</span> 
+										</span>
+										<span class="info-list-item">
+											<span class="info-list-title">{{language | locale : i18n}}:</span>
+											{{document.lang | objectFilter}}
+										</span>		
+									</div>
+								</div>
+							</li>
+						</ul>
+						<hr>						
+					</div>					
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>
+<!-- End Project Listing -->				

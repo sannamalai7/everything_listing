@@ -1,0 +1,10 @@
+Everything:
+Author URL: https://aemauthorstg65.worldbank.org/content/worldbankgroup/president/en/president.html?wcmmode=disabled
+Prod author: https://aemauthor.worldbank.org/content/worldbankgroup/president/en/president.html?wcmmode=disabled
+File Path: https://aemauthorstg65.worldbank.org/crx/de/index.jsp#/etc/designs/wbrrdesign/components/custom_search_events/js/main.js
+jsp path: https://aemauthorstg65.worldbank.org/crx/de/index.jsp#/apps/wbrnews/components/content/custom_search/custom_search.jsp
+
+pagination
+facets,
+showing details
+table title need to load dynamically

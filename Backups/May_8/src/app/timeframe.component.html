@@ -1,0 +1,34 @@
+<ul class="sidebar-list">
+  <li class="sidebar-list-item">
+    <a
+      class="sidebar-link"
+      (click)="updateIsCollapsed(!isCollapsed)"
+      attr.aria-expanded="{{ !isCollapsed }}"
+      >{{ timeframe | locale : i18nValues }}</a
+    >
+  </li>
+  <ul class="sidebar-sublist" [@timeframeFadeInOut]="collapseAnimation">
+    <li
+      *ngFor="let timeframe of timeFrames | timeFrameContains : timeFrameItems"
+    >
+      <a
+        data-customlink="sf:body content"
+        (click)="onSelectTimeFrame(timeframe.value); (false)"
+        [ngClass]="{
+          'disable-click': (timeFrameItems | objectContains : timeframe.label)
+        }"
+      >
+        <span class="sidebar-sublist-item"
+          >{{ timeframe.label | locale : i18nValues }}&nbsp;</span
+        ><span class="list-item-num"></span>
+      </a>
+      <a
+        class="remove-tf"
+        (click)="onDeselectTimeFrame(); (false)"
+        *ngIf="timeFrameItems | objectContains : timeframe.label"
+      >
+        <span class="glyphicon glyphicon-remove-circle"></span>
+      </a>
+    </li>
+  </ul>
+</ul>

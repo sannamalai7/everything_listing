@@ -1,0 +1,130 @@
+.disable-click  {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  text-decoration: none !important;
+  color: #787878!important;
+}
+.event-disable-click {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  text-decoration: none !important;
+  color: #000!important;
+}
+.mouse-pointer {
+  cursor: pointer
+}
+.submit-btn a>span {
+  padding: 9px 9px 10px 12px;
+  color: #fff;
+}
+.facet-search-remove {
+  cursor: pointer;
+  pointer-events: all;
+  padding: 8px 0px 0px 0px;
+
+}
+.ajax-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: grey;
+  opacity: .8
+}
+.ajax-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -32px;
+  margin-top: -32px;
+  display: block
+}
+
+._loop_btn_secondary:hover, ._loop_btn_secondary.hover, ._loop_btn_secondary.active {
+    color: #ffffff !important;
+    background-color: #333333 !important;
+    border:none !important;
+}
+.sidebar-list .submit-btn {
+    position: relative !important;
+}
+.sidebar-list .submit-btn span.fa.fa-play {
+    border:none !important;
+    left: 0px !important;
+    top: 0px !important;
+    font-size: 16px;
+}
+.card-v4-section .card-wrapper img {
+    width: 100%;
+    height: auto;
+}
+.card-v4-section .card-wrapper .fa-play {
+    padding: 3px 0 0 3px !important;
+}
+.sidebar-sublist li a.remove-btn {
+    display: inline-block;
+}
+.sidebar-sublist li a.remove-btn span.fa-times-circle-o {
+    color: #004c92;
+}
+.search-submit-icon {  
+  cursor: pointer !important; 
+  pointer-events: all !important;
+  color: #ec553a !important;
+}
+.sidebar-sublist .form-control {
+  height: 34px !important;
+  border-radius: 3px !important;
+}
+.sidebar-heading h4 {
+ padding-left:10px;
+}
+.mydp .selection {
+    background-color: #fafdff !important;
+    padding-left: 10px !important;   
+}
+.hammer, .small-headline {
+    text-transform: none !important;
+}
+@media (max-width: 991px) and (min-width: 320px) {
+._loop_primary_input {
+    width:110px;
+ }
+ .equal-height {
+    display:block;
+ }
+.sidebar-nav-mobile .sidebar-list ul li a,
+    .sidebar-collapse .sidebar-list ul li a {
+    padding: 16px 0px 16px 0px;
+    display: inline-block;
+}
+ .sidebar-sublist li a span.fa.fa-times-circle-o {
+    color: #004c92 !important;
+}
+
+.refine-select-button {
+    display: inline-flex;
+}
+
+.refine-select-button .delete-item {
+    padding-top: 1px;
+}
+.sidebar-nav-mobile .sidebar-heading {   
+    padding: 8px 16px 6px 16px !important;
+}
+
+}
+@media (max-width: 480px) and (min-width: 320px) {
+.card-v4-section .card-wrapper img {
+    width: 100%;
+    height: auto;
+}
+.sidebar-nav-mobile .sidebar-heading h4 {
+	font-size: 16px !important;
+}
+.sidebar-nav-mobile .sidebar-heading {   
+    padding: 8px 16px 6px 16px !important;
+}
+}
